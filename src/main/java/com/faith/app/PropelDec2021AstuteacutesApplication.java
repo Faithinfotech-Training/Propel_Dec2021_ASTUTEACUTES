@@ -8,6 +8,7 @@ public class PropelDec2021AstuteacutesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PropelDec2021AstuteacutesApplication.class, args);
+		System.out.println("welcome tea4");
 	}
 
 }
