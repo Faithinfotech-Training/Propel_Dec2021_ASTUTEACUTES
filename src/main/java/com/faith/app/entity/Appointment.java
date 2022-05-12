@@ -1,6 +1,6 @@
 package com.faith.app.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name= "appointment")
@@ -42,7 +43,7 @@ public class Appointment {
 	@JoinColumn(name="docId", insertable = false, updatable = false)
 	private Doctor  doctor; 
 	
-	private Date doa;
+	private LocalDate doa;
 	
 	
 	private String isActive;
@@ -50,25 +51,18 @@ public class Appointment {
 	
 	@CreationTimestamp
 	@Column(name = "created_date")
-	private Date createdDate;
+	private LocalDate createdDate;
 
-	@OneToMany(mappedBy="appointment",cascade=CascadeType.ALL)
-	List<LabTestPrescribed> labTestsPrescribed;
 	
-	
-	@OneToMany(mappedBy="appointment",cascade=CascadeType.ALL)
-	List<MedicinePrescribed> medicinePrescribed;
-	
-	@OneToMany(mappedBy="appointment",cascade=CascadeType.ALL)
-	List<Prescriptionnotes> prescriptionnotes;
 
 	public Appointment() {
 		super();
 	}
 
 
+
 	public Appointment(int appoinId, int patientId, Patient patient, String tokenNum, int docId, Doctor doctor,
-			Date doa, String isActive, Date createdDate) {
+			LocalDate doa, String isActive, LocalDate createdDate) {
 		super();
 		this.appoinId = appoinId;
 		this.patientId = patientId;
@@ -80,6 +74,7 @@ public class Appointment {
 		this.isActive = isActive;
 		this.createdDate = createdDate;
 	}
+
 
 
 	public int getAppoinId() {
@@ -87,9 +82,11 @@ public class Appointment {
 	}
 
 
+
 	public void setAppoinId(int appoinId) {
 		this.appoinId = appoinId;
 	}
+
 
 
 	public int getPatientId() {
@@ -97,9 +94,11 @@ public class Appointment {
 	}
 
 
+
 	public void setPatientId(int patientId) {
 		this.patientId = patientId;
 	}
+
 
 	@JsonBackReference
 	public Patient getPatient() {
@@ -107,9 +106,11 @@ public class Appointment {
 	}
 
 
+
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
+
 
 
 	public String getTokenNum() {
@@ -117,9 +118,11 @@ public class Appointment {
 	}
 
 
+
 	public void setTokenNum(String tokenNum) {
 		this.tokenNum = tokenNum;
 	}
+
 
 
 	public int getDocId() {
@@ -127,9 +130,11 @@ public class Appointment {
 	}
 
 
+
 	public void setDocId(int docId) {
 		this.docId = docId;
 	}
+
 
 	@JsonBackReference
 	public Doctor getDoctor() {
@@ -137,19 +142,23 @@ public class Appointment {
 	}
 
 
+
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
 	}
 
 
-	public Date getDoa() {
+
+	public LocalDate getDoa() {
 		return doa;
 	}
 
 
-	public void setDoa(Date doa) {
+
+	public void setDoa(LocalDate doa) {
 		this.doa = doa;
 	}
+
 
 
 	public String getIsActive() {
@@ -157,27 +166,26 @@ public class Appointment {
 	}
 
 
+
 	public void setIsActive(String isActive) {
 		this.isActive = isActive;
 	}
 
 
-	public Date getCreatedDate() {
+
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
 
-	public void setCreatedDate(Date createdDate) {
+
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 
+	
 
-	@Override
-	public String toString() {
-		return "Appointment [appoinId=" + appoinId + ", patientId=" + patientId + ", patient=" + patient + ", tokenNum="
-				+ tokenNum + ", docId=" + docId + ", doctor=" + doctor + ", doa=" + doa + ", isActive=" + isActive
-				+ ", createdDate=" + createdDate + "]";
-	}
+	
 	
 	
 

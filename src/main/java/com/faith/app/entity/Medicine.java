@@ -1,6 +1,6 @@
 package com.faith.app.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name= "medicine")
@@ -45,7 +47,7 @@ public class Medicine {
 	
 	@CreationTimestamp
 	@Column(name = "created_date")
-	private Date createdDate;
+	private LocalDate createdDate;
 
 
 	public Medicine() {
@@ -54,7 +56,7 @@ public class Medicine {
 
 
 	public Medicine(int medicineId, String medicineName, String genericName, String companyName, int quantity,
-			double price, String isActive, Date createdDate) {
+			double price, String isActive, List<MedicinePrescribed> medicinePrescribed, LocalDate createdDate) {
 		super();
 		this.medicineId = medicineId;
 		this.medicineName = medicineName;
@@ -63,6 +65,7 @@ public class Medicine {
 		this.quantity = quantity;
 		this.price = price;
 		this.isActive = isActive;
+		this.medicinePrescribed = medicinePrescribed;
 		this.createdDate = createdDate;
 	}
 
@@ -136,13 +139,23 @@ public class Medicine {
 		this.isActive = isActive;
 	}
 
+	@JsonManagedReference
+	public List<MedicinePrescribed> getMedicinePrescribed() {
+		return medicinePrescribed;
+	}
 
-	public Date getCreatedDate() {
+
+	public void setMedicinePrescribed(List<MedicinePrescribed> medicinePrescribed) {
+		this.medicinePrescribed = medicinePrescribed;
+	}
+
+
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -151,9 +164,10 @@ public class Medicine {
 	public String toString() {
 		return "Medicine [medicineId=" + medicineId + ", medicineName=" + medicineName + ", genericName=" + genericName
 				+ ", companyName=" + companyName + ", quantity=" + quantity + ", price=" + price + ", isActive="
-				+ isActive + ", createdDate=" + createdDate + "]";
+				+ isActive + ", medicinePrescribed=" + medicinePrescribed + ", createdDate=" + createdDate + "]";
 	}
 
+	
 	
 
 }

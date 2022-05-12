@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.faith.app.dao.IAppointmentRepository;
+import com.faith.app.dto.AppointmentDTO;
 
 import com.faith.app.entity.Appointment;
 
@@ -20,6 +21,12 @@ public class AppoServiceImplement implements IAppointmentService {
 	public List<Appointment> getAppointments() {
 		
 		return  (List<Appointment>) appointmentRepo.findAll();
+	}
+
+	@Override
+	public List<AppointmentDTO> getAllDTOAppointments() {
+		
+		return (List<AppointmentDTO>) appointmentRepo.getAllDTOAppointmentDetails();
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.faith.app.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,6 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name= "labtest")
@@ -49,7 +49,7 @@ public class LabTest {
 	
 	@CreationTimestamp
 	@Column(name = "created_date")
-	private Date createdDate;
+	private LocalDate createdDate;
 
 
 	public LabTest() {
@@ -59,7 +59,7 @@ public class LabTest {
 
 	public LabTest(int labtestId, String testCode, String testName, double price, double highRange, double lowRange,
 			String isActive, List<LabTestPrescribed> labTestsPrescribed, List<TestReport> testReport,
-			Date createdDate) {
+			LocalDate createdDate) {
 		super();
 		this.labtestId = labtestId;
 		this.testCode = testCode;
@@ -143,33 +143,33 @@ public class LabTest {
 		this.isActive = isActive;
 	}
 
-
+	@JsonBackReference
 	public List<LabTestPrescribed> getLabTestsPrescribed() {
 		return labTestsPrescribed;
 	}
 
-	@JsonBackReference
+
 	public void setLabTestsPrescribed(List<LabTestPrescribed> labTestsPrescribed) {
 		this.labTestsPrescribed = labTestsPrescribed;
 	}
 
-
+	@JsonBackReference
 	public List<TestReport> getTestReport() {
 		return testReport;
 	}
 
-	@JsonBackReference
+
 	public void setTestReport(List<TestReport> testReport) {
 		this.testReport = testReport;
 	}
 
 
-	public Date getCreatedDate() {
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -182,10 +182,6 @@ public class LabTest {
 				+ createdDate + "]";
 	}
 
-
-
-	
-	
 	
 	
 	

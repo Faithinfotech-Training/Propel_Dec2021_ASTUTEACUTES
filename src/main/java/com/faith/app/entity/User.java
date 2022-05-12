@@ -1,5 +1,6 @@
 package com.faith.app.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -35,7 +36,7 @@ public class User {
 	
 	 @CreationTimestamp
 	 @Column(name = "created_date")
-	 private Date createdDate;
+	 private LocalDate createdDate;
 	
 	 private String isActive;
 	 
@@ -47,7 +48,7 @@ public class User {
 		super();
 	}
 
-	public User(int userId, String userName, String password, int roleId, Date createdDate, String isActive,
+	public User(int userId, String userName, String password, int roleId, LocalDate createdDate, String isActive,
 			Role role) {
 		super();
 		this.userId = userId;
@@ -91,11 +92,11 @@ public class User {
 		this.roleId = roleId;
 	}
 
-	public Date getCreatedDate() {
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 

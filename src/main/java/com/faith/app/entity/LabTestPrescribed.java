@@ -1,5 +1,6 @@
 package com.faith.app.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,10 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -43,9 +41,9 @@ public class LabTestPrescribed {
 	private String isActive;
 	
 	
-	@CreationTimestamp
+	
 	@Column(name = "created_date")
-	private Date createdDate;
+	private LocalDate createdDate;
 
 
 	public LabTestPrescribed() {
@@ -54,7 +52,7 @@ public class LabTestPrescribed {
 
 
 	public LabTestPrescribed(int labtestprescribeId, int labtestId, LabTest labTest, int appoinId,
-			Appointment appointment, String isActive, Date createdDate) {
+			Appointment appointment, String isActive, LocalDate createdDate) {
 		super();
 		this.labtestprescribeId = labtestprescribeId;
 		this.labtestId = labtestId;
@@ -90,7 +88,7 @@ public class LabTestPrescribed {
 		return labTest;
 	}
 
-
+	
 	public void setLabTest(LabTest labTest) {
 		this.labTest = labTest;
 	}
@@ -126,12 +124,12 @@ public class LabTestPrescribed {
 	}
 
 
-	public Date getCreatedDate() {
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -143,6 +141,8 @@ public class LabTestPrescribed {
 				+ ", createdDate=" + createdDate + "]";
 	}
 
+
+	
 	
 	
 	

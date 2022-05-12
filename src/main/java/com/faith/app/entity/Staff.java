@@ -1,5 +1,6 @@
 package com.faith.app.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -31,13 +32,13 @@ public class Staff {
 	
 	private String fullName;
 	
-	private Date dob;
+	private LocalDate dob;
 	
 	private String mobileno;
 	
 	private String address;
 	
-	private Date doj;
+	private LocalDate doj;
 	
 	private double salary;
 	
@@ -48,7 +49,7 @@ public class Staff {
 	
 	@CreationTimestamp
 	@Column(name = "created_date")
-	private Date createdDate;
+	private LocalDate createdDate;
 	 
 	 
 	@OneToOne
@@ -58,6 +59,26 @@ public class Staff {
 
 	public Staff() {
 		super();
+	}
+
+	
+	public Staff(int staffId, int userId, String staffNo, String fullName, LocalDate dob, String mobileno,
+			String address, LocalDate doj, double salary, String email, String isActive, LocalDate createdDate,
+			User user) {
+		super();
+		this.staffId = staffId;
+		this.userId = userId;
+		this.staffNo = staffNo;
+		this.fullName = fullName;
+		this.dob = dob;
+		this.mobileno = mobileno;
+		this.address = address;
+		this.doj = doj;
+		this.salary = salary;
+		this.email = email;
+		this.isActive = isActive;
+		this.createdDate = createdDate;
+		this.user = user;
 	}
 
 
@@ -101,12 +122,12 @@ public class Staff {
 	}
 
 
-	public Date getDob() {
+	public LocalDate getDob() {
 		return dob;
 	}
 
 
-	public void setDob(Date dob) {
+	public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
 
@@ -131,12 +152,12 @@ public class Staff {
 	}
 
 
-	public Date getDoj() {
+	public LocalDate getDoj() {
 		return doj;
 	}
 
 
-	public void setDoj(Date doj) {
+	public void setDoj(LocalDate doj) {
 		this.doj = doj;
 	}
 
@@ -171,12 +192,12 @@ public class Staff {
 	}
 
 
-	public Date getCreatedDate() {
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 

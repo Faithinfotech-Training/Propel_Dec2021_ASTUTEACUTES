@@ -1,5 +1,6 @@
 package com.faith.app.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class TestResultDTO {
@@ -17,14 +18,14 @@ public class TestResultDTO {
 	
 	private int appoinId;
 	
-	private Date createdDate;
+	private LocalDate createdDate;
 
 	public TestResultDTO() {
 		super();
 	}
 
 	public TestResultDTO(int patientId, String fullName, String testCode, String testName, int labtestprescribeId,
-			double observedvalue, int appoinId, Date createdDate) {
+			double observedvalue, int appoinId, LocalDate createdDate) {
 		super();
 		this.patientId = patientId;
 		this.fullName = fullName;
@@ -92,11 +93,11 @@ public class TestResultDTO {
 		this.appoinId = appoinId;
 	}
 
-	public Date getCreatedDate() {
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 

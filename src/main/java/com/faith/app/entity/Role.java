@@ -1,5 +1,6 @@
 package com.faith.app.entity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,7 +26,7 @@ public class Role {
 	
 	 @CreationTimestamp
 	 @Column(name = "created_date")
-	 private Date createdDate;
+	 private LocalDate createdDate;
 	 
 	 private String isActive;
 	
@@ -37,7 +38,7 @@ public class Role {
 		super();
 	}
 
-	public Role(int roleId, String roleName, Date createdDate, String isActive, List<User> users) {
+	public Role(int roleId, String roleName, LocalDate createdDate, String isActive, List<User> users) {
 		super();
 		this.roleId = roleId;
 		this.roleName = roleName;
@@ -62,11 +63,11 @@ public class Role {
 		this.roleName = roleName;
 	}
 
-	public Date getCreatedDate() {
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 
